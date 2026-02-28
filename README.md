@@ -128,8 +128,8 @@ Agentic RAG：用户问题 → Agent → 多轮 search_base_rag → 归纳 → �
 ### 2. 安装依赖
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/my_agent_learning.git
-cd my_agent_learning
+git clone https://github.com/YOUR_USERNAME/Agentic_Rag.git
+cd Agentic_Rag
 pip install -r requirements.txt
 ```
 
