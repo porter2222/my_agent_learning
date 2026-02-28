@@ -1,23 +1,24 @@
 """
 Agentic RAG - FastAPI 入口
 """
-import io
 import os
+import io
 import zipfile
-from typing import Optional
-
-from dotenv import load_dotenv
-from fastapi import FastAPI, File, HTTPException, Request, UploadFile
-from langchain_deepseek import ChatDeepSeek
+from fastapi import FastAPI, File, UploadFile, HTTPException, Request
+from agentic_rag_test.agentic_rag.file_processor import FileProcessor  # 文档处理类
 from deepagents import create_deep_agent
+from langchain.agents import create_agent
+from dotenv import load_dotenv
+from langchain_deepseek import ChatDeepSeek
+from agentic_rag_test.agentic_rag.prompt.agentic_report_prompt import SYSTEM_PROMPT
+from agentic_rag_test.agentic_rag.tools.base_rag import ask_base_rag,search_base_rag
+from agentic_rag_test.agentic_rag.database.history_repository import log_history, get_history
+from agentic_rag_test.agentic_rag.database.history_tables import ensure_history_table
+from agentic_rag_test.agentic_rag.database.db import engine, Base
+from agentic_rag_test.agentic_rag.database import models # noqa: F401  # 注册 ORM 模型，便于 create_all
+from typing import Optional
+from agentic_rag_test.agentic_rag.qdrant_manager import QDRANT_MANAGER
 from deepagents.backends import FilesystemBackend
-
-from file_processor import FileProcessor
-from qdrant_manager import QDRANT_MANAGER
-from tools.base_rag import ask_base_rag, search_base_rag
-from prompt.agentic_report_prompt import SYSTEM_PROMPT
-from database.history_repository import log_history, get_history
-from database.history_tables import ensure_history_table
 
 load_dotenv()
 
