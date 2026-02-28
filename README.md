@@ -1,4 +1,4 @@
-# Agentic RAG — 基于商业研究报告的智能问答与报告生成系统
+# Agentic RAG — 基于商业研究报告的万金油式智能问答与报告生成系统
 
 <div align="center">
 
@@ -6,7 +6,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-**多模态文档处理 | 向量检索 | Agent 自主规划 | 可溯源报告生成**
+**万金油式多模态文档处理 | 向量检索 | Agent 自主规划 | 可溯源报告生成**
 
 [功能特性](#功能特性) · [创新点](#创新点) · [技术架构](#技术架构) · [快速开始](#快速开始) · [API 文档](#api-文档)
 
