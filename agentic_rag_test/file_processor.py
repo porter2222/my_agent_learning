@@ -2,25 +2,23 @@
 文档/图片处理流水线 - 多模态摘要、OCR、向量化、入库
 支持 PDF、DOCX、PPTX、DOC 及多种图片格式
 """
-import os
-import io
+from pdf2image import convert_from_path
+from PIL import Image
 import base64
+from openai import OpenAI
 import json
-import tempfile
-import shutil
-from pathlib import Path
-from datetime import datetime
+import docx
+from docx2pdf import convert
+import io
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any
-
-import fitz  # PyMuPDF
-from openai import OpenAI
-from PIL import Image, ImageDraw, ImageFont
+import threading
+import shutil
+from datetime import datetime
 from pptx import Presentation
-
-from docx2pdf import convert
-from llm_factory import LLMClient
-from config import KIMI_API_KEY
+from PIL import ImageDraw, ImageFont
+from agentic_rag_test.agentic_rag.llm_factory import LLMClient
+load_dotenv()
 
 # Kimi OCR 客户端（月之暗面 API）
 kimi_client = OpenAI(
